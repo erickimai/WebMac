@@ -128,7 +128,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         
         const btn = document.getElementById("btn-listener");
-        btn.addEventListener("click", function() {
+        btn.addEventListener("click", () => {
             btn.innerHTML = "Fui clicado via Listener!"
         });        
         
@@ -136,7 +136,7 @@
         const addButton = document.getElementById("btn-add");
         const itemList = document.getElementById("lista-itens");
 
-        addButton.addEventListener("click", function() {
+        addButton.addEventListener("click", () => {
             const inputValue = itemInput.value;
 
             if (inputValue !== '') {
@@ -148,15 +148,29 @@
             }
         })
         
+        const contButton = document.getElementById("btn-iniciar");
+        function contar() {
+            counter++;
+            document.getElementById("visor-cronometro").innerHTML = counter;
+        }
+
+        let counter = 0;
+        let intervalID = null;
+        contButton.addEventListener("click", () => {
+            if (intervalID === null) {
+                intervalID = setInterval(contar, 1000);
+            }
+        });
         
-        // --- Exercício 3 ---
-        // Dica: Crie a variável do tempo aqui fora, e o setInterval dentro do listener do botão
-        // Seu código aqui
-        
-        
-        // --- Exercício 4 ---
-        // Seu código aqui (Lembre-se de checar o localStorage logo que a página carregar!)
-        
+        const teamID = document.getElementById("time-selecionado");
+        const team = document.querySelector('#select-time');
+        team.onchange = () => {
+            teamID.innerHTML =  team.value;
+            localStorage.setItem('team', team.value);
+            console.log(localStorage.getItem('team'));
+        }
+
+
     });
 </script>
 
