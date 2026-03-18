@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><title>Login</title></head>
+<body>
+    <h1>Login</h1>
+    <input type="text" id="username" placeholder="Nome de usuário" /><br/><br/>
+    <input type="password" id="senha" placeholder="Senha" /><br/><br/>
+    <button type="button" onclick="logar()">Entrar</button>
+
+    <p id="mensagem"></p>
+
+    <script>
+        async function logar() {
+            const username = document.getElementById("username").value;
+            const senha = document.getElementById("senha").value;
+
+            const resposta = await fetch("/login", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ username, senha, bio: "" })
+            });
+
+            const dados = await resposta.json();
+            if (resposta.ok) {
+                window.location.href = "/home";  // redireciona para o perfil
+            } else {
+                document.getElementById("mensagem").textContent = dados.detail;
+            }
+        }
+    </script>
+</body>
+</html>
