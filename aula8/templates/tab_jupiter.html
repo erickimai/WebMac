@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>JupiterWeb - USP</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    header img.logo {
+      height: 49px;
+      width: 122px;
+    }
+
+    header img.logo-texto {
+      height: 44px;
+      width: 260px;
+    }
+
+    .header-bar {
+      width: 100%;
+      height: 26px;
+      background-image: url('https://uspdigital.usp.br/comumwebdev/imagens/cabecalho/bg-headtop.gif');
+      background-repeat: repeat-x;
+      margin-bottom: 8px;
+    }
+
+    /* LAYOUT */
+    .container {
+      display: flex;
+      max-width: 900px;
+      margin: 20px auto;
+      gap: 20px;
+      padding: 0 15px;
+    }
+
+    /* SIDEBAR */
+    aside {
+      width: 180px;
+      flex-shrink: 0;
+    }
+
+    aside h3 {
+      background-color: #b0b0b0;
+      color: white;
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 3px 3px 0 0;
+    }
+
+    aside ul {
+      list-style: none;
+      background: white;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 3px 3px;
+    }
+
+    aside ul li a {
+      display: block;
+      padding: 6px 10px;
+      font-size: 11px;
+      color: #b0b0b0;
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    aside ul li a:hover {
+      background-color: #b0b0b0;
+      color: white;
+    }
+
+    aside ul li:last-child a {
+      border-bottom: none;
+    }
+
+    /* MAIN */
+    main {
+      flex: 1;
+      background: white;
+      padding: 25px 30px;
+      border-radius: 5px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      border-top: 3px solid #b0b0b0;
+    }
+
+    main h2 {
+      color: #b0b0b0;
+      font-size: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #ddd;
+      font-family: Verdana, sans-serif;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 14px;
+      border: 1px solid #bbb;
+      border-radius: 3px;
+      font-size: 13px;
+      font-family: Verdana, sans-serif;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: #b0b0b0;
+      box-shadow: 0 0 4px rgba(92, 122, 46, 0.35);
+      outline: none;
+    }
+
+    input[type="submit"] {
+      padding: 8px 22px;
+      background-color: #b0b0b0;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      font-size: 13px;
+      font-family: Verdana, sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #888888;
+    }
+
+    .links-extras {
+      margin-top: 14px;
+      font-size: 11px;
+    }
+
+    .links-extras a {
+      color: #b0b0b0;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .links-extras a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 30px;
+      border-top: 1px solid #ccc;
+      text-align: center;
+      padding: 14px;
+      font-size: 11px;
+      color: #555;
+      font-family: Arial, sans-serif;
+    }
+
+    footer a {
+      color: olive;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="http://www.usp.br" target="_blank">
+      <img class="logo" src="https://uspdigital.usp.br/comumwebdev/imagens/cabecalho/usp-logo.png" alt="Logo USP">
+    </a>
+    <a href="http://www.usp.br" target="_blank">
+      <img class="logo-texto" src="https://uspdigital.usp.br/comumwebdev/imagens/cabecalho/usp-logo-texto.png" alt="Universidade de São Paulo">
+    </a>
+  </header>
+  <div class="header-bar"></div>
+
+
+
+  <div class="container">
+
+    <!-- SIDEBAR -->
+    <aside>
+      <h3>Acesso Restrito</h3>
+      <ul>
+        <li><a href="webLogin.jsp">Entrar</a></li>
+        <li><a href="esqueciSenha">Esqueci a Senha</a></li>
+        <li><a href="primeiroAcesso">Primeiro Acesso</a></li>
+      </ul>
+
+
+
+    </aside>
+
+    <!-- CONTEÚDO / LOGIN -->
+    <main>
+      <h2>Login</h2>
+      <form action="autenticar" method="post">
+
+        <label for="codpes">Usuário (Nº USP):</label>
+        <input type="text" id="codpes" name="codpes" placeholder="Ex: 12345678"
+               oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+
+        <label for="senusu">Senha:</label>
+        <input type="password" id="senusu" name="senusu" placeholder="Digite sua senha" required>
+
+        <input type="submit" value=" Entrar ">
+        <input type="hidden" name="url" value="">
+      </form>
+
+      <div class="links-extras">
+        <a href="esqueciSenha">Esqueci a senha</a>
+        <a href="primeiroAcesso">Primeiro acesso</a>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <hr size="1">
+    <a href="creditos.jsp">Créditos</a>
+    &nbsp;|&nbsp;
+    <a href="jupColegiadoEmailLista">Fale conosco</a>
+    <br>
+    &copy; 1999 - 2026 - Superintendência de Tecnologia da Informação / USP
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<section>
+    <h2> Curtidas</h2> 
+    <p>
+        <strong><span id="contador">{{ curtidas }}</span></strong> curtidas
+
+        <button hx-post="/curtir"
+                hx-target="#contador"
+                hx-swap="innerHTML">
+            Curtir!  
+        </button>
+
+        <!--
+            hx-confirm exibe um alert nativo do navegador antes de disparar
+            a requisição. Se o usuário cancelar, a requisição não é enviada.
+            Isso é tudo HTMX — sem nenhuma linha de JavaScript.
+        -->
+        <button hx-delete="/curtir"
+                hx-target="#contador"
+                hx-swap="innerHTML"                                             
+                hx-confirm="Tem certeza que deseja remover TODAS as curtidas?"> 
+            Remover tudo                                                        
+        </button>       
