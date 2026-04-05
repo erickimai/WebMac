@@ -1,0 +1,44 @@
+<div>
+    <input type="text"
+           name="busca"
+           placeholder="Buscar..."
+           hx-get="/lista"
+           hx-trigger="input changed delay:500ms"
+           hx-select="#lista"
+           hx-target="#lista"
+           hx-vals='{"pagina": "1"}'
+           hx-indicator="#indicator">
+    <span id="indicator" class="htmx-indicator">Carregando...</span>
+</div>
+
+<div id="lista">
+    <ul>
+        {% for aluno in alunos %}
+            <li>{{ aluno.id }} - {{ aluno.nome }}</li>
+        {% else %}
+            <li>Não há alunos</li>
+        {% endfor %}
+    </ul>
+
+    <div>
+        {% if pagina > 1 %}
+            <button hx-get="/lista"
+                    hx-target="#lista"
+                    hx-select="#lista"
+                    hx-vals='{"pagina": "{{ pagina - 1 }}", "busca": "{{ busca }}"}'>
+                &laquo; Anterior
+            </button>
+        {% endif %}
+
+        <span>Página {{ pagina }}</span>
+
+        {% if tem_proxima %}
+            <button hx-get="/lista"
+                    hx-target="#lista"
+                    hx-select="#lista"
+                    hx-vals='{"pagina": "{{ pagina + 1 }}", "busca": "{{ busca }}"}'>
+                Próxima &raquo;
+            </button>
+        {% endif %}
+    </div>
+</div>
